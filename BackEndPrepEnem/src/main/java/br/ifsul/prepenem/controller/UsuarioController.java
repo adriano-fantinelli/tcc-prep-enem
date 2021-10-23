@@ -34,8 +34,20 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/usuarios")
-	Usuario newUsuario(@RequestBody Usuario newUsuario) {
-		return repository.save(newUsuario);
+	String newUsuario(@RequestBody Usuario newUsuario) {
+		List<Usuario> listaUsuarios = repository.findAll();
+		for (int i = 0; i < listaUsuarios.size(); i++) {
+			if (listaUsuarios.get(i).getEmail().equals(newUsuario.getEmail())) {
+				return "{\n\"response\":\"E-mail já cadastrado.\"\n}";
+			}
+		} 
+
+		if (newUsuario.getEmail().equals("") || newUsuario.getSenha().equals("") || newUsuario.getNome().equals("")
+				|| newUsuario.getDescricao().equals("") || newUsuario.getNumeroCelular().equals("")) {
+			return "{\n\"response\":\"Algum campo em branco.\"\n}";
+		} else {
+			return "{\n\"id\":\"" + repository.save(newUsuario).getId().toString() + "\"\n}";
+		}
 	}
 
 	@GetMapping("/usuarios/{id}")
@@ -46,9 +58,12 @@ public class UsuarioController {
 	@PutMapping("/usuarios/{id}")
 	Usuario replaceUsuario(@RequestBody Usuario newUsuario, @PathVariable Long id) {
 		return repository.findById(id).map(usuario -> {
-			usuario.setNomeCompleto(newUsuario.getNomeCompleto());
 			usuario.setEmail(newUsuario.getEmail());
 			usuario.setSenha(newUsuario.getSenha());
+			usuario.setNome(newUsuario.getNome());
+			usuario.setDescricao(newUsuario.getDescricao());
+			usuario.setNumeroCelular(newUsuario.getNumeroCelular());
+			usuario.setProfessor(newUsuario.isProfessor());
 			return repository.save(usuario);
 		}).orElseGet(() -> {
 			newUsuario.setId(id);
@@ -69,7 +84,6 @@ public class UsuarioController {
 			if (listaUsuarios.get(i).getSenha().equals(senha) && listaUsuarios.get(i).getEmail().equals(email)) {
 				String token = getJWTToken(email);
 				usuario.setEmail(email);
-				usuario.setToken(token);
 				return "{\n\"response\":\"" + token + "\"\n}";
 			}
 		}

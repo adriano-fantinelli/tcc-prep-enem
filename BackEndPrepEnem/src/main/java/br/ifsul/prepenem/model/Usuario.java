@@ -1,32 +1,86 @@
 package br.ifsul.prepenem.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "usuario_id")
 	private Long id;
-	private String nomeCompleto, email, senha, token;
+	private String email, senha, nome, descricao, numeroCelular;
+	private boolean professor;
 
+	@OneToMany(mappedBy="usuario")
+	private Set<Desempenho> desempenho;
+	
+	@OneToMany(mappedBy="usuario")
+	private Set<Explicacao> explicacao;
+	
 	public Usuario() {
 	}
 
-	Usuario(String nomeCompleto, String email, String senha) {
-		this.nomeCompleto = nomeCompleto;
+	Usuario(String email, String senha, String nome, String descricao, String numeroCelular, boolean professor) {
 		this.email = email;
 		this.senha = senha;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.numeroCelular = numeroCelular;
+		this.professor = professor;
+	}
+	
+	public Set<Desempenho> getDesempenho() {
+		return desempenho;
 	}
 
-	public String getToken() {
-		return token;
+	public void setDesempenho(Set<Desempenho> desempenho) {
+		desempenho = desempenho;
 	}
 
-	public void setToken(String token) {
-		this.token = token;
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getNumeroCelular() {
+		return numeroCelular;
+	}
+
+	public void setNumeroCelular(String numeroCelular) {
+		this.numeroCelular = numeroCelular;
+	}
+
+	public boolean isProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(boolean professor) {
+		this.professor = professor;
 	}
 
 	public Long getId() {
@@ -35,14 +89,6 @@ public class Usuario {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getNomeCompleto() {
-		return nomeCompleto;
-	}
-
-	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
 	}
 
 	public String getEmail() {
