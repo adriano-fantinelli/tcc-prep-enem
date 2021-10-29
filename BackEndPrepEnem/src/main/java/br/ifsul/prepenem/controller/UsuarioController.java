@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import br.ifsul.prepenem.model.Usuario;
 import br.ifsul.prepenem.repository.UsuarioRepository;
-import br.ifsul.prepenem.utils.UsuarioNotFoundException;
+import br.ifsul.prepenem.utils.RegistroNotFoundException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
@@ -52,7 +52,7 @@ public class UsuarioController {
 
 	@GetMapping("/usuarios/{id}")
 	Usuario one(@PathVariable Long id) {
-		return repository.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
+		return repository.findById(id).orElseThrow(() -> new RegistroNotFoundException(id));
 	}
 
 	@PutMapping("/usuarios/{id}")

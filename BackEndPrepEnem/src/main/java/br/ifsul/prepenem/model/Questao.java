@@ -17,6 +17,8 @@ public class Questao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "questao_id")
 	private Long id;
+	
+	@Column(length = 2000)
 	private String enunciado, matrizCurricular, anoProva, imagem;
 	
 	@OneToOne(mappedBy="questao")
