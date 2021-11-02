@@ -10,6 +10,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Explicacao {
 	@Id
@@ -19,10 +23,12 @@ public class Explicacao {
 	
 	private String textoExplicacao;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
 	
+	@JsonBackReference
 	@OneToOne
 	@JoinColumn(name = "questao_id")
 	private Questao questao;

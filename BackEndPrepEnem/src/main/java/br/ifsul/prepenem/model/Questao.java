@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Questao {
 	@Id
@@ -21,9 +23,11 @@ public class Questao {
 	@Column(length = 2000)
 	private String enunciado, matrizCurricular, anoProva, imagem;
 	
+	@JsonManagedReference
 	@OneToOne(mappedBy="questao")
 	private Explicacao explicacao;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy="questao")
 	private Set<Alternativa> alternativa;
 	

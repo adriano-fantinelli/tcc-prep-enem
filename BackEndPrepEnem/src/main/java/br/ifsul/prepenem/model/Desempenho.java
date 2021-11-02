@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Desempenho {
 	@Id
@@ -16,7 +19,8 @@ public class Desempenho {
 	private Long id;
 	private String matrizCurricular;
 	private int numeroRespondidas, numeroAcertos;
-
+	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;

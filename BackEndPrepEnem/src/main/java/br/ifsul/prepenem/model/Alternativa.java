@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Alternativa {
 	@Id
@@ -18,6 +21,7 @@ public class Alternativa {
 	private boolean correta;
 	private String textoAlternativa;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="questao_id")
 	private Questao questao;

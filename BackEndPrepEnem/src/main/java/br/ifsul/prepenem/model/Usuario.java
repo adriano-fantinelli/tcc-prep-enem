@@ -16,6 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Usuario {
 	@Id
@@ -25,9 +27,11 @@ public class Usuario {
 	private String email, senha, nome, descricao, numeroCelular;
 	private boolean professor;
 
+	@JsonManagedReference
 	@OneToMany(mappedBy="usuario")
 	private Set<Desempenho> desempenho;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy="usuario")
 	private Set<Explicacao> explicacao;
 	
