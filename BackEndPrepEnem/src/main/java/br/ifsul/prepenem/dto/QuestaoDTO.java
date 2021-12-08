@@ -1,38 +1,19 @@
-package br.ifsul.prepenem.model;
+package br.ifsul.prepenem.dto;
 
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
-@Entity
-public class Questao {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "questao_id")
+public class QuestaoDTO {
 	private Long id;
-	
-	@Column(length = 2000)
 	private String enunciado, matrizCurricular, anoProva, imagem;
+	private ExplicacaoDTO explicacao;
+	private Set<AlternativaDTO> alternativa;
 	
-	@OneToOne(mappedBy="questao")
-	private Explicacao explicacao;
-	
-	@OneToMany(mappedBy="questao")
-	private Set<Alternativa> alternativa;
-	
-	public Questao() {
+	public QuestaoDTO() {
 		super();
 	}
 
-	public Questao(Long id, String enunciado, String matrizCurricular, String anoProva, String imagem,
-			Explicacao explicacao, Set<Alternativa> alternativa) {
+	public QuestaoDTO(Long id, String enunciado, String matrizCurricular, String anoProva, String imagem,
+			ExplicacaoDTO explicacao, Set<AlternativaDTO> alternativa) {
 		super();
 		this.id = id;
 		this.enunciado = enunciado;
@@ -83,19 +64,19 @@ public class Questao {
 		this.imagem = imagem;
 	}
 
-	public Explicacao getExplicacao() {
+	public ExplicacaoDTO getExplicacao() {
 		return explicacao;
 	}
 
-	public void setExplicacao(Explicacao explicacao) {
+	public void setExplicacao(ExplicacaoDTO explicacao) {
 		this.explicacao = explicacao;
 	}
 
-	public Set<Alternativa> getAlternativa() {
+	public Set<AlternativaDTO> getAlternativa() {
 		return alternativa;
 	}
 
-	public void setAlternativa(Set<Alternativa> alternativa) {
+	public void setAlternativa(Set<AlternativaDTO> alternativa) {
 		this.alternativa = alternativa;
 	}
 }

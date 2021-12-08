@@ -1,44 +1,29 @@
-package br.ifsul.prepenem.model;
+package br.ifsul.prepenem.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-@Entity
-public class Desempenho {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "desempenho_id")
+public class DesempenhoDTO {
 	private Long id;
 	private String matrizCurricular;
 	private int numeroRespondidas, numeroAcertos;
-	
-	@ManyToOne
-	@JoinColumn(name="usuario_id")
-	private Usuario usuario;
+	//private UsuarioDTO usuario;
 
-	public Desempenho() {
+	public DesempenhoDTO() {
 	}
 
-	Desempenho(String matrizCurricular, int numeroRespondidas, int numeroAcertos, Usuario usuario) {
+	DesempenhoDTO(String matrizCurricular, int numeroRespondidas, int numeroAcertos, UsuarioDTO usuario) {
 		this.matrizCurricular = matrizCurricular;
 		this.numeroRespondidas = numeroRespondidas;
 		this.numeroAcertos = numeroAcertos;
-		this.usuario = usuario;
+		//this.usuario = usuario;
 	}
 	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-	
+//	public UsuarioDTO getUsuario() {
+//		return usuario;
+//	}
+//
+//	public void setUsuario(UsuarioDTO usuario) {
+//		this.usuario = usuario;
+//	}
+//	
 	public Long getId() {
 		return id;
 	}

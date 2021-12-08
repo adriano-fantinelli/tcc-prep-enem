@@ -1,6 +1,10 @@
 package br.ifsul.prepenem.controller;
 
 import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,17 +15,23 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.ifsul.prepenem.dto.UsuarioDTO;
 import br.ifsul.prepenem.model.Usuario;
 import br.ifsul.prepenem.repository.UsuarioRepository;
 import br.ifsul.prepenem.utils.RegistroNotFoundException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.stream.Collectors;
 
 @RestController
 public class UsuarioController {
 
+	private ModelMapper mapper = new ModelMapper();
+	
 	private final UsuarioRepository repository;
 
 	UsuarioController(UsuarioRepository repository) {
@@ -29,34 +39,48 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/usuarios")
-	List<Usuario> all() {
-		return repository.findAll();
+	public List<UsuarioDTO> all() {
+		List<Usuario> usuarios = repository.findAll();
+		
+		List<UsuarioDTO> usuariosDTO = usuarios.stream().map(this::converte).collect(Collectors.toList());
+		
+		return usuariosDTO;
 	}
 
 	@PostMapping("/usuarios")
-	String newUsuario(@RequestBody Usuario newUsuario) {
+	public ResponseEntity<?> novoUsuario(@RequestBody Usuario usuario) {
 		List<Usuario> listaUsuarios = repository.findAll();
+		
 		for (int i = 0; i < listaUsuarios.size(); i++) {
-			if (listaUsuarios.get(i).getEmail().equals(newUsuario.getEmail())) {
-				return "{\n\"response\":\"E-mail já cadastrado.\"\n}";
+			if (listaUsuarios.get(i).getEmail().equals(usuario.getEmail())) {
+				return new ResponseEntity<>("E-mail já cadastrado.", HttpStatus.METHOD_NOT_ALLOWED);
 			}
 		} 
 
-		if (newUsuario.getEmail().equals("") || newUsuario.getSenha().equals("") || newUsuario.getNome().equals("")
-				|| newUsuario.getDescricao().equals("") || newUsuario.getNumeroCelular().equals("")) {
-			return "{\n\"response\":\"Algum campo em branco.\"\n}";
+		if (usuario.getEmail().equals("") || usuario.getSenha().equals("") || usuario.getNome().equals("")
+				|| usuario.getDescricao().equals("") || usuario.getNumeroCelular().equals("")) {
+			return new ResponseEntity<>("Algum campo em branco.", HttpStatus.METHOD_NOT_ALLOWED);
+
 		} else {
-			return "{\n\"id\":\"" + repository.save(newUsuario).getId().toString() + "\"\n}";
+			Usuario salvo = repository.save(usuario);
+						
+			UsuarioDTO salvoDTO = converte(salvo);
+			
+			return new ResponseEntity<UsuarioDTO>(salvoDTO, HttpStatus.OK);
 		}
 	}
 
 	@GetMapping("/usuarios/{id}")
-	Usuario one(@PathVariable Long id) {
-		return repository.findById(id).orElseThrow(() -> new RegistroNotFoundException(id));
+	public ResponseEntity<?> editarUsuario(@PathVariable Long id) {	
+		Usuario selecionado = repository.findById(id).orElseThrow(() -> new RegistroNotFoundException(id));
+		
+		UsuarioDTO selecionadoDTO = converte(selecionado);
+		
+		return new ResponseEntity<UsuarioDTO>(selecionadoDTO, HttpStatus.OK);
 	}
 
 	@PutMapping("/usuarios/{id}")
-	Usuario replaceUsuario(@RequestBody Usuario newUsuario, @PathVariable Long id) {
+	public ResponseEntity<?> replaceUsuario(@RequestBody Usuario newUsuario, @PathVariable Long id) {
 		return repository.findById(id).map(usuario -> {
 			usuario.setEmail(newUsuario.getEmail());
 			usuario.setSenha(newUsuario.getSenha());
@@ -64,10 +88,14 @@ public class UsuarioController {
 			usuario.setDescricao(newUsuario.getDescricao());
 			usuario.setNumeroCelular(newUsuario.getNumeroCelular());
 			usuario.setProfessor(newUsuario.isProfessor());
-			return repository.save(usuario);
+			Usuario salvo = repository.save(usuario);			
+			UsuarioDTO salvoDTO = converte(salvo);
+			return new ResponseEntity<UsuarioDTO>(salvoDTO, HttpStatus.OK);
 		}).orElseGet(() -> {
 			newUsuario.setId(id);
-			return repository.save(newUsuario);
+			Usuario salvo = repository.save(newUsuario);			
+			UsuarioDTO salvoDTO = converte(salvo);
+			return new ResponseEntity<UsuarioDTO>(salvoDTO, HttpStatus.OK);
 		});
 	}
 
@@ -77,17 +105,17 @@ public class UsuarioController {
 	}
 
 	@PostMapping("token")
-	public String login(@RequestParam("email") String email, @RequestParam("senha") String senha) {
+	public ResponseEntity<?> login(@RequestParam("email") String email, @RequestParam("senha") String senha) {
 		List<Usuario> listaUsuarios = repository.findAll();
 		Usuario usuario = new Usuario();
 		for (int i = 0; i < listaUsuarios.size(); i++) {
 			if (listaUsuarios.get(i).getSenha().equals(senha) && listaUsuarios.get(i).getEmail().equals(email)) {
 				String token = getJWTToken(email);
 				usuario.setEmail(email);
-				return "{\n\"response\":\"" + token + "\"\n}";
+				return new ResponseEntity<>(token, HttpStatus.OK);
 			}
 		}
-		return "{\"response\":\"E-mail e senha incorretos ou em branco.\"}";
+		return new ResponseEntity<>("E-mail e senha incorretos ou em branco.", HttpStatus.METHOD_NOT_ALLOWED);
 	}
 
 	private String getJWTToken(String email) {
@@ -102,5 +130,9 @@ public class UsuarioController {
 				.signWith(SignatureAlgorithm.HS512, secretKey.getBytes()).compact();
 
 		return "Bearer " + token;
+	}
+	
+	private UsuarioDTO converte(Usuario usuario) {
+		 return mapper.map(usuario, UsuarioDTO.class);
 	}
 }

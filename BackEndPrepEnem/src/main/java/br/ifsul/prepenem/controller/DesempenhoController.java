@@ -1,9 +1,12 @@
 package br.ifsul.prepenem.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,14 +15,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.ifsul.prepenem.dto.DesempenhoDTO;
+import br.ifsul.prepenem.dto.UsuarioDTO;
 import br.ifsul.prepenem.model.Alternativa;
 import br.ifsul.prepenem.model.Desempenho;
+import br.ifsul.prepenem.model.Usuario;
 import br.ifsul.prepenem.repository.AlternativaReposity;
 import br.ifsul.prepenem.repository.DesempenhoRepository;
 import br.ifsul.prepenem.utils.RegistroNotFoundException;
 
 @RestController
 public class DesempenhoController {
+	
+	private ModelMapper mapper = new ModelMapper();
 	
 	@Autowired
 	private final DesempenhoRepository repository;
@@ -29,18 +37,33 @@ public class DesempenhoController {
 	}
 	
 	@GetMapping("/desempenhos")
-	List<Desempenho> all() {
-		return repository.findAll();
+	public List<DesempenhoDTO> all() {		
+		List<Desempenho> desempenhos = repository.findAll();
+		
+		List<DesempenhoDTO> desempenhosDTO = desempenhos.stream().map(this::converte).collect(Collectors.toList());
+		
+		return desempenhosDTO;
 	}
 	
 	@PostMapping("/desempenhos")
-	Desempenho newDesempenho(@RequestBody Desempenho newDesempenho) {
-		return repository.save(newDesempenho);		
+	public DesempenhoDTO newDesempenho(@RequestBody Desempenho desempenho) {		
+		Desempenho salvo = repository.save(desempenho);
+		
+		DesempenhoDTO salvoDTO = converte(salvo);
+		
+		return salvoDTO;
+		
+		
+		
 	}
 	
 	@GetMapping("/desempenhos/{id}")
-	Desempenho one(@PathVariable Long id) {
-		return repository.findById(id).orElseThrow(() -> new RegistroNotFoundException(id));
+	public ResponseEntity<?> one(@PathVariable Long id) {		
+		Desempenho selecionado = repository.findById(id).orElseThrow(() -> new RegistroNotFoundException(id));
+		
+		DesempenhoDTO selecionadoDTO = converte(selecionado);
+		
+		return new ResponseEntity<DesempenhoDTO>(selecionadoDTO, HttpStatus.OK);
 	}
 
 	@PutMapping("/desempenhos/{id}")
@@ -60,5 +83,9 @@ public class DesempenhoController {
 	@DeleteMapping("/desempenhos/{id}")
 	void deleteDesempenho(@PathVariable Long id) {
 		repository.deleteById(id);
+	}
+	
+	private DesempenhoDTO converte(Desempenho desempenho) {
+		 return mapper.map(desempenho, DesempenhoDTO.class);
 	}
 }
