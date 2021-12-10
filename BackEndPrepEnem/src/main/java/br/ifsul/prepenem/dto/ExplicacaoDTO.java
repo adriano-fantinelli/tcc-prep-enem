@@ -3,8 +3,8 @@ package br.ifsul.prepenem.dto;
 public class ExplicacaoDTO {
 	private Long id;
 	private String textoExplicacao;
-	//private UsuarioDTO usuario;
-	private QuestaoDTO questao;
+//	private UsuarioDTO usuario;
+//	private QuestaoDTO questao;
 
 	public ExplicacaoDTO() {
 		super();
@@ -15,7 +15,7 @@ public class ExplicacaoDTO {
 		this.id = id;
 		this.textoExplicacao = textoExplicacao;
 //		this.usuario = usuario;
-		this.questao = questao;
+//		this.questao = questao;
 	}
 
 	public Long getId() {
@@ -42,11 +42,11 @@ public class ExplicacaoDTO {
 //		this.usuario = usuario;
 //	}
 
-	public QuestaoDTO getQuestao() {
-		return questao;
-	}
-
-	public void setQuestao(QuestaoDTO questao) {
-		this.questao = questao;
-	}
+//	public QuestaoDTO getQuestao() {
+//		return questao;
+//	}
+//
+//	public void setQuestao(QuestaoDTO questao) {
+//		this.questao = questao;
+//	}
 }

@@ -16,11 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.ifsul.prepenem.dto.DesempenhoDTO;
-import br.ifsul.prepenem.dto.UsuarioDTO;
-import br.ifsul.prepenem.model.Alternativa;
 import br.ifsul.prepenem.model.Desempenho;
-import br.ifsul.prepenem.model.Usuario;
-import br.ifsul.prepenem.repository.AlternativaReposity;
 import br.ifsul.prepenem.repository.DesempenhoRepository;
 import br.ifsul.prepenem.utils.RegistroNotFoundException;
 
@@ -37,51 +33,46 @@ public class DesempenhoController {
 	}
 	
 	@GetMapping("/desempenhos")
-	public List<DesempenhoDTO> all() {		
+	public List<DesempenhoDTO> get() {		
 		List<Desempenho> desempenhos = repository.findAll();
-		
 		List<DesempenhoDTO> desempenhosDTO = desempenhos.stream().map(this::converte).collect(Collectors.toList());
-		
 		return desempenhosDTO;
 	}
 	
 	@PostMapping("/desempenhos")
-	public DesempenhoDTO newDesempenho(@RequestBody Desempenho desempenho) {		
+	public DesempenhoDTO post(@RequestBody Desempenho desempenho) {		
 		Desempenho salvo = repository.save(desempenho);
-		
 		DesempenhoDTO salvoDTO = converte(salvo);
-		
 		return salvoDTO;
-		
-		
-		
 	}
 	
 	@GetMapping("/desempenhos/{id}")
-	public ResponseEntity<?> one(@PathVariable Long id) {		
+	public ResponseEntity<?> getId(@PathVariable Long id) {		
 		Desempenho selecionado = repository.findById(id).orElseThrow(() -> new RegistroNotFoundException(id));
-		
 		DesempenhoDTO selecionadoDTO = converte(selecionado);
-		
 		return new ResponseEntity<DesempenhoDTO>(selecionadoDTO, HttpStatus.OK);
 	}
 
 	@PutMapping("/desempenhos/{id}")
-	Desempenho replaceDesempenho(@RequestBody Desempenho newDesempenho, @PathVariable Long id) {
+	public ResponseEntity<?> put(@RequestBody Desempenho newDesempenho, @PathVariable Long id) {
 		return repository.findById(id).map(desempenho -> {
 			desempenho.setUsuario(newDesempenho.getUsuario());
 			desempenho.setMatrizCurricular(newDesempenho.getMatrizCurricular());
 			desempenho.setNumeroRespondidas(newDesempenho.getNumeroRespondidas());
 			desempenho.setNumeroAcertos(newDesempenho.getNumeroAcertos());
-			return repository.save(desempenho);
+			Desempenho salvo = repository.save(desempenho);
+			DesempenhoDTO salvoDTO = converte(salvo);
+			return new ResponseEntity<DesempenhoDTO>(salvoDTO, HttpStatus.OK);			
 		}).orElseGet(() -> {
-			newDesempenho.setId(id);
-			return repository.save(newDesempenho);
+			newDesempenho.setId(id);			
+			Desempenho salvo = repository.save(newDesempenho);
+			DesempenhoDTO salvoDTO = converte(salvo);
+			return new ResponseEntity<DesempenhoDTO>(salvoDTO, HttpStatus.OK);
 		});
 	}
 	
 	@DeleteMapping("/desempenhos/{id}")
-	void deleteDesempenho(@PathVariable Long id) {
+	void delete(@PathVariable Long id) {
 		repository.deleteById(id);
 	}
 	

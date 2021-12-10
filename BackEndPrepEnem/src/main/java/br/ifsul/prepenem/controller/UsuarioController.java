@@ -23,7 +23,6 @@ import br.ifsul.prepenem.utils.RegistroNotFoundException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.stream.Collectors;
 
@@ -39,48 +38,39 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/usuarios")
-	public List<UsuarioDTO> all() {
+	public List<UsuarioDTO> get() {
 		List<Usuario> usuarios = repository.findAll();
-		
 		List<UsuarioDTO> usuariosDTO = usuarios.stream().map(this::converte).collect(Collectors.toList());
-		
 		return usuariosDTO;
 	}
 
 	@PostMapping("/usuarios")
-	public ResponseEntity<?> novoUsuario(@RequestBody Usuario usuario) {
+	public ResponseEntity<?> post(@RequestBody Usuario usuario) {
 		List<Usuario> listaUsuarios = repository.findAll();
-		
 		for (int i = 0; i < listaUsuarios.size(); i++) {
 			if (listaUsuarios.get(i).getEmail().equals(usuario.getEmail())) {
 				return new ResponseEntity<>("E-mail já cadastrado.", HttpStatus.METHOD_NOT_ALLOWED);
 			}
 		} 
-
 		if (usuario.getEmail().equals("") || usuario.getSenha().equals("") || usuario.getNome().equals("")
 				|| usuario.getDescricao().equals("") || usuario.getNumeroCelular().equals("")) {
 			return new ResponseEntity<>("Algum campo em branco.", HttpStatus.METHOD_NOT_ALLOWED);
-
 		} else {
-			Usuario salvo = repository.save(usuario);
-						
+			Usuario salvo = repository.save(usuario);		
 			UsuarioDTO salvoDTO = converte(salvo);
-			
 			return new ResponseEntity<UsuarioDTO>(salvoDTO, HttpStatus.OK);
 		}
 	}
 
 	@GetMapping("/usuarios/{id}")
-	public ResponseEntity<?> editarUsuario(@PathVariable Long id) {	
+	public ResponseEntity<?> getId(@PathVariable Long id) {	
 		Usuario selecionado = repository.findById(id).orElseThrow(() -> new RegistroNotFoundException(id));
-		
 		UsuarioDTO selecionadoDTO = converte(selecionado);
-		
 		return new ResponseEntity<UsuarioDTO>(selecionadoDTO, HttpStatus.OK);
 	}
 
 	@PutMapping("/usuarios/{id}")
-	public ResponseEntity<?> replaceUsuario(@RequestBody Usuario newUsuario, @PathVariable Long id) {
+	public ResponseEntity<?> put(@RequestBody Usuario newUsuario, @PathVariable Long id) {
 		return repository.findById(id).map(usuario -> {
 			usuario.setEmail(newUsuario.getEmail());
 			usuario.setSenha(newUsuario.getSenha());
@@ -100,7 +90,7 @@ public class UsuarioController {
 	}
 
 	@DeleteMapping("/usuarios/{id}")
-	void deleteUsuario(@PathVariable Long id) {
+	void delete(@PathVariable Long id) {
 		repository.deleteById(id);
 	}
 

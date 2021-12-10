@@ -4,7 +4,7 @@ public class AlternativaDTO {
 	private Long id;
 	private boolean correta;
 	private String textoAlternativa;
-	private QuestaoDTO questao;
+//	private QuestaoDTO questao;
 	
 	public AlternativaDTO() {
 		super();
@@ -15,7 +15,7 @@ public class AlternativaDTO {
 		this.id = id;
 		this.correta = correta;
 		this.textoAlternativa = textoAlternativa;
-		this.questao = questao;
+//		this.questao = questao;
 	}
 
 	public Long getId() {
@@ -42,11 +42,11 @@ public class AlternativaDTO {
 		this.textoAlternativa = textoAlternativa;
 	}
 
-	public QuestaoDTO getQuestao() {
-		return questao;
-	}
-
-	public void setQuestao(QuestaoDTO questao) {
-		this.questao = questao;
-	}
+//	public QuestaoDTO getQuestao() {
+//		return questao;
+//	}
+//
+//	public void setQuestao(QuestaoDTO questao) {
+//		this.questao = questao;
+//	}
 }
