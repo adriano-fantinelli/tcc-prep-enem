@@ -1,0 +1,33 @@
+INSERT INTO prepenem.questao (ano_prova, enunciado, imagem, matriz_curricular)
+VALUES ("2021", "É possível afirmar que muitas expressões idiomáticas
+transmitidas pela cultura regional possuem autores
+anônimos, no entanto, algumas delas surgiram em
+consequência de contextos históricos bem curiosos.
+“Aquele é um cabra da peste” é um bom exemplo dessas
+construções.
+Para compreender essa expressão tão repetida no
+Nordeste brasileiro, faz-se necessário voltar o olhar para o
+século 16. “Cabra” remete à forma com que os navegadores
+portugueses chamavam os índios. Já “peste” estaria ligada
+à questão da superação e resistência, ou mesmo uma
+associação com o diabo. Assim, com o passar dos anos,
+passou-se a utilizar tal expressão para denominar qualquer
+indivíduo que se mostre corajoso, ou mesmo insolente, já
+que a expressão pode ter caráter positivo ou negativo. Aliás,
+quem já não ficou de “nhe-nhe-nhém” por aí? O termo, que
+normalmente tem significado de conversa interminável,
+monótona ou resmungo, tem origem no tupi-guarani e
+“nhém” significa “falar”.
+Disponível em: http://leiturasdahistoria.uol.com.br. Acesso em: 13 dez. 2017.
+A leitura do texto permite ao leitor entrar em contato com", "", "LINGUAGENS, CÓDIGOS E SUAS TECNOLOGIAS");
+
+INSERT INTO prepenem.alternativa (correta, texto_alternativa, questao_id)
+VALUES (1, "registros do inventário do português brasileiro.", 5);
+INSERT INTO prepenem.alternativa (correta, texto_alternativa, questao_id)
+VALUES (0, "justificativas da variedade linguística do país.", 5);
+INSERT INTO prepenem.alternativa (correta, texto_alternativa, questao_id)
+VALUES (0, "influências da fala do nordestino no uso da língua.", 5);
+INSERT INTO prepenem.alternativa (correta, texto_alternativa, questao_id)
+VALUES (0, "explorações do falar de um grupo social específico.", 5);
+INSERT INTO prepenem.alternativa (correta, texto_alternativa, questao_id)
+VALUES (0, " representações da mudança linguística do português.", 5);

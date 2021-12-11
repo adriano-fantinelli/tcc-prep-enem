@@ -40,10 +40,14 @@ public class ExplicacaoController {
 	}
 	
 	@PostMapping("/explicacoes")
-	public ExplicacaoDTO post(@RequestBody Explicacao explicacao) {
-		Explicacao salvo = repository.save(explicacao);
-		ExplicacaoDTO salvoDTO = converte(salvo);
-		return salvoDTO;
+	public ResponseEntity<?> post(@RequestBody Explicacao explicacao) {
+		if (explicacao.getTextoExplicacao().equals("") || explicacao.getTextoExplicacao().equals(null) || explicacao.getUsuario().getId().equals("") || explicacao.getUsuario().getId().equals(null) || explicacao.getQuestao().getId().equals("") || explicacao.getQuestao().getId().equals(null)) {
+			return new ResponseEntity<>("Algum campo em branco.", HttpStatus.METHOD_NOT_ALLOWED);
+		} else {
+			Explicacao salvo = repository.save(explicacao);
+			ExplicacaoDTO salvoDTO = converte(salvo);			
+			return new ResponseEntity<ExplicacaoDTO>(salvoDTO, HttpStatus.OK);
+		}
 	}
 	
 	@GetMapping("/explicacoes/{id}")
