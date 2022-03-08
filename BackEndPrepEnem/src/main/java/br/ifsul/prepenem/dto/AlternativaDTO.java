@@ -1,16 +1,25 @@
 package br.ifsul.prepenem.dto;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import br.ifsul.prepenem.model.Questao;
+
 public class AlternativaDTO {
 	private Long id;
 	private boolean correta;
 	private String textoAlternativa;
-//	private QuestaoDTO questao;
+//	private Questao questao;
 	
 	public AlternativaDTO() {
 		super();
 	}
 
-	public AlternativaDTO(Long id, boolean correta, String textoAlternativa, QuestaoDTO questao) {
+	public AlternativaDTO(Long id, boolean correta, String textoAlternativa, Questao questao) {
 		super();
 		this.id = id;
 		this.correta = correta;
@@ -42,11 +51,11 @@ public class AlternativaDTO {
 		this.textoAlternativa = textoAlternativa;
 	}
 
-//	public QuestaoDTO getQuestao() {
+//	public Questao getQuestao() {
 //		return questao;
 //	}
 //
-//	public void setQuestao(QuestaoDTO questao) {
+//	public void setQuestao(Questao questao) {
 //		this.questao = questao;
 //	}
 }

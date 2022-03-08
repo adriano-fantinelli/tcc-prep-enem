@@ -57,9 +57,8 @@ public class DesempenhoController {
 	public ResponseEntity<?> put(@RequestBody Desempenho newDesempenho, @PathVariable Long id) {
 		return repository.findById(id).map(desempenho -> {
 			desempenho.setUsuario(newDesempenho.getUsuario());
-			desempenho.setMatrizCurricular(newDesempenho.getMatrizCurricular());
-			desempenho.setNumeroRespondidas(newDesempenho.getNumeroRespondidas());
-			desempenho.setNumeroAcertos(newDesempenho.getNumeroAcertos());
+			desempenho.setQuestao(newDesempenho.getQuestao());
+			desempenho.setRespondidaCorretamente(newDesempenho.getRespondidaCorretamente());
 			Desempenho salvo = repository.save(desempenho);
 			DesempenhoDTO salvoDTO = converte(salvo);
 			return new ResponseEntity<DesempenhoDTO>(salvoDTO, HttpStatus.OK);			

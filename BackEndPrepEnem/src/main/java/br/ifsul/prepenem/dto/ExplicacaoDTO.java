@@ -1,16 +1,27 @@
 package br.ifsul.prepenem.dto;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import br.ifsul.prepenem.model.Questao;
+import br.ifsul.prepenem.model.Usuario;
+
 public class ExplicacaoDTO {
 	private Long id;
 	private String textoExplicacao;
-//	private UsuarioDTO usuario;
-//	private QuestaoDTO questao;
+//	private Usuario usuario;
+//	private Questao questao;
 
 	public ExplicacaoDTO() {
 		super();
 	}
 
-	public ExplicacaoDTO(Long id, String textoExplicacao, UsuarioDTO usuario, QuestaoDTO questao) {
+	public ExplicacaoDTO(Long id, String textoExplicacao, Usuario usuario, Questao questao) {
 		super();
 		this.id = id;
 		this.textoExplicacao = textoExplicacao;
@@ -34,19 +45,19 @@ public class ExplicacaoDTO {
 		this.textoExplicacao = textoExplicacao;
 	}
 
-//	public UsuarioDTO getUsuario() {
+//	public Usuario getUsuario() {
 //		return usuario;
 //	}
 //
-//	public void setUsuario(UsuarioDTO usuario) {
+//	public void setUsuario(Usuario usuario) {
 //		this.usuario = usuario;
 //	}
-
-//	public QuestaoDTO getQuestao() {
+//
+//	public Questao getQuestao() {
 //		return questao;
 //	}
 //
-//	public void setQuestao(QuestaoDTO questao) {
+//	public void setQuestao(Questao questao) {
 //		this.questao = questao;
 //	}
 }

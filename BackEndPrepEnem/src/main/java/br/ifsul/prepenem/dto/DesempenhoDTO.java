@@ -1,29 +1,32 @@
 package br.ifsul.prepenem.dto;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import br.ifsul.prepenem.model.Questao;
+import br.ifsul.prepenem.model.Usuario;
+
 public class DesempenhoDTO {
 	private Long id;
-	private String matrizCurricular;
-	private int numeroRespondidas, numeroAcertos;
-	//private UsuarioDTO usuario;
-
+	private Boolean respondidaCorretamente;
+//	private Usuario usuario;
+//	private Questao questao;
+	
 	public DesempenhoDTO() {
 	}
 
-	DesempenhoDTO(String matrizCurricular, int numeroRespondidas, int numeroAcertos, UsuarioDTO usuario) {
-		this.matrizCurricular = matrizCurricular;
-		this.numeroRespondidas = numeroRespondidas;
-		this.numeroAcertos = numeroAcertos;
-		//this.usuario = usuario;
-	}
-	
-//	public UsuarioDTO getUsuario() {
-//		return usuario;
-//	}
-//
-//	public void setUsuario(UsuarioDTO usuario) {
+	public DesempenhoDTO(Long id, Boolean respondidaCorretamente, Usuario usuario, Questao questao) {
+		super();
+		this.id = id;
+		this.respondidaCorretamente = respondidaCorretamente;
 //		this.usuario = usuario;
-//	}
-//	
+//		this.questao = questao;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -32,27 +35,27 @@ public class DesempenhoDTO {
 		this.id = id;
 	}
 
-	public String getMatrizCurricular() {
-		return matrizCurricular;
+	public Boolean getRespondidaCorretamente() {
+		return respondidaCorretamente;
 	}
 
-	public void setMatrizCurricular(String matrizCurricular) {
-		this.matrizCurricular = matrizCurricular;
+	public void setRespondidaCorretamente(Boolean respondidaCorretamente) {
+		this.respondidaCorretamente = respondidaCorretamente;
 	}
 
-	public int getNumeroRespondidas() {
-		return numeroRespondidas;
-	}
-
-	public void setNumeroRespondidas(int numeroRespondidas) {
-		this.numeroRespondidas = numeroRespondidas;
-	}
-
-	public int getNumeroAcertos() {
-		return numeroAcertos;
-	}
-
-	public void setNumeroAcertos(int numeroAcertos) {
-		this.numeroAcertos = numeroAcertos;
-	}
+//	public Usuario getUsuario() {
+//		return usuario;
+//	}
+//
+//	public void setUsuario(Usuario usuario) {
+//		this.usuario = usuario;
+//	}
+//
+//	public Questao getQuestao() {
+//		return questao;
+//	}
+//
+//	public void setQuestao(Questao questao) {
+//		this.questao = questao;
+//	}
 }

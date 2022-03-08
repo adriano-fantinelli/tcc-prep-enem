@@ -27,12 +27,15 @@ public class Questao {
 	@OneToMany(mappedBy="questao")
 	private Set<Alternativa> alternativa;
 	
+	@OneToMany(mappedBy="questao")
+	private Set<Desempenho> desempenho;
+	
 	public Questao() {
 		super();
 	}
 
 	public Questao(Long id, String enunciado, String matrizCurricular, String anoProva, String imagem,
-			Explicacao explicacao, Set<Alternativa> alternativa) {
+			Explicacao explicacao, Set<Alternativa> alternativa, Set<Desempenho> desempenho) {
 		super();
 		this.id = id;
 		this.enunciado = enunciado;
@@ -41,6 +44,7 @@ public class Questao {
 		this.imagem = imagem;
 		this.explicacao = explicacao;
 		this.alternativa = alternativa;
+		this.desempenho = desempenho;
 	}
 
 	public Long getId() {
@@ -97,5 +101,13 @@ public class Questao {
 
 	public void setAlternativa(Set<Alternativa> alternativa) {
 		this.alternativa = alternativa;
+	}
+
+	public Set<Desempenho> getDesempenho() {
+		return desempenho;
+	}
+
+	public void setDesempenho(Set<Desempenho> desempenho) {
+		this.desempenho = desempenho;
 	}
 }

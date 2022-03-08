@@ -14,31 +14,27 @@ public class Desempenho {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "desempenho_id")
 	private Long id;
-	private String matrizCurricular;
-	private int numeroRespondidas, numeroAcertos;
+	private Boolean respondidaCorretamente;
 	
 	@ManyToOne
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
 
+	@ManyToOne
+	@JoinColumn(name="questao_id")
+	private Questao questao;
+	
 	public Desempenho() {
 	}
 
-	Desempenho(String matrizCurricular, int numeroRespondidas, int numeroAcertos, Usuario usuario) {
-		this.matrizCurricular = matrizCurricular;
-		this.numeroRespondidas = numeroRespondidas;
-		this.numeroAcertos = numeroAcertos;
+	public Desempenho(Long id, Boolean respondidaCorretamente, Usuario usuario, Questao questao) {
+		super();
+		this.id = id;
+		this.respondidaCorretamente = respondidaCorretamente;
 		this.usuario = usuario;
-	}
-	
-	public Usuario getUsuario() {
-		return usuario;
+		this.questao = questao;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-	
 	public Long getId() {
 		return id;
 	}
@@ -47,27 +43,27 @@ public class Desempenho {
 		this.id = id;
 	}
 
-	public String getMatrizCurricular() {
-		return matrizCurricular;
+	public Boolean getRespondidaCorretamente() {
+		return respondidaCorretamente;
 	}
 
-	public void setMatrizCurricular(String matrizCurricular) {
-		this.matrizCurricular = matrizCurricular;
+	public void setRespondidaCorretamente(Boolean respondidaCorretamente) {
+		this.respondidaCorretamente = respondidaCorretamente;
 	}
 
-	public int getNumeroRespondidas() {
-		return numeroRespondidas;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setNumeroRespondidas(int numeroRespondidas) {
-		this.numeroRespondidas = numeroRespondidas;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public int getNumeroAcertos() {
-		return numeroAcertos;
+	public Questao getQuestao() {
+		return questao;
 	}
 
-	public void setNumeroAcertos(int numeroAcertos) {
-		this.numeroAcertos = numeroAcertos;
+	public void setQuestao(Questao questao) {
+		this.questao = questao;
 	}
 }

@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 import br.ifsul.prepenem.utils.JWTAuthorizationFilter;
 
 @SpringBootApplication
@@ -15,9 +16,8 @@ public class Main {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Main.class, args);
-		System.out.println("Welcome!");
 	}
-	
+
 	@EnableWebSecurity
 	@Configuration
 	class WebSecurityConfig extends WebSecurityConfigurerAdapter {
