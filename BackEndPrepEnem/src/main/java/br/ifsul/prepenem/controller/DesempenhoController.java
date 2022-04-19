@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.ifsul.prepenem.dto.DesempenhoDTO;
+import br.ifsul.prepenem.dto.DesempenhoUsuarioDTO;
 import br.ifsul.prepenem.model.Desempenho;
 import br.ifsul.prepenem.repository.DesempenhoRepository;
 import br.ifsul.prepenem.utils.RegistroNotFoundException;
@@ -51,6 +52,21 @@ public class DesempenhoController {
 		Desempenho selecionado = repository.findById(id).orElseThrow(() -> new RegistroNotFoundException(id));
 		DesempenhoDTO selecionadoDTO = converte(selecionado);
 		return new ResponseEntity<DesempenhoDTO>(selecionadoDTO, HttpStatus.OK);
+	}
+	
+	@GetMapping("/desempenhos/usuario/{id}")
+	public ResponseEntity<?> getDesempenhoByIdUsuario(@PathVariable Long id) {		
+		DesempenhoUsuarioDTO selecionadoDTO = new DesempenhoUsuarioDTO();
+		int totalRespondidas = repository.encontrarTotalRespondidasPorIdUsuario(id);		
+		int totalRespondidasCorretamente = repository.encontrarTotalRespondidasCorretamentePorIdUsuario(id);
+		int totalRespondidasIncorretamente = totalRespondidas - totalRespondidasCorretamente;
+		double porcentagemDeAcerto = (totalRespondidasCorretamente*100)/totalRespondidas;
+		
+		selecionadoDTO.setTotalRespondidas(totalRespondidas);
+		selecionadoDTO.setTotalRespondidasCorretamente(totalRespondidasCorretamente);
+		selecionadoDTO.setTotalRespondidasIncorretamente(totalRespondidasIncorretamente);
+		selecionadoDTO.setPorcentagemDeAcerto(porcentagemDeAcerto);
+		return new ResponseEntity<DesempenhoUsuarioDTO>(selecionadoDTO, HttpStatus.OK);
 	}
 
 	@PutMapping("/desempenhos/{id}")

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.ifsul.prepenem.dto.TokenDTO;
 import br.ifsul.prepenem.dto.UsuarioDTO;
 import br.ifsul.prepenem.model.Usuario;
 import br.ifsul.prepenem.repository.UsuarioRepository;
@@ -100,9 +101,10 @@ public class UsuarioController {
 		Usuario usuario = new Usuario();
 		for (int i = 0; i < listaUsuarios.size(); i++) {
 			if (listaUsuarios.get(i).getSenha().equals(senha) && listaUsuarios.get(i).getEmail().equals(email)) {
-				String token = getJWTToken(email);
-				usuario.setEmail(email);
-				return new ResponseEntity<>(token, HttpStatus.OK);
+				TokenDTO selecionadoDTO = new TokenDTO();
+				selecionadoDTO.setId(listaUsuarios.get(i).getId());
+				selecionadoDTO.setToken(getJWTToken(email));
+				return new ResponseEntity<TokenDTO>(selecionadoDTO, HttpStatus.OK);
 			}
 		}
 		return new ResponseEntity<>("E-mail e senha incorretos ou em branco.", HttpStatus.METHOD_NOT_ALLOWED);
