@@ -1,0 +1,857 @@
+{
+	"info": {
+		"_postman_id": "b65b2b3c-26b4-4de2-ba9f-a4dcb934a80f",
+		"name": "PrepENEM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "localhost:8080/usuarios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY1MDMzMDYxMywiZXhwIjoxNjUwMzMxMjEzfQ.K_YryWNXwFzMkDYQbImA6W_XDs8zzqV4AM5OZWuCmBqkLSJfr-xcAlsdn4msFZe2Nof2rPc15dguFvBx-LcVEw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios"
+							]
+						},
+						"description": "Buscar todos os usuários"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/usuarios/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0Njk1NjEwNywiZXhwIjoxNjQ2OTU2NzA3fQ.KpUO5sboR3xKt4sYtiKi20vq0JdJarnj0j-bdjHaYXO2IaJkGp2angOkiYeF-kA1HwUcG1yaf1ddoi_cKg6RIw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"5"
+							]
+						},
+						"description": "Buscar todos os usuários"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/usuarios",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0Njk1NjEwNywiZXhwIjoxNjQ2OTU2NzA3fQ.KpUO5sboR3xKt4sYtiKi20vq0JdJarnj0j-bdjHaYXO2IaJkGp2angOkiYeF-kA1HwUcG1yaf1ddoi_cKg6RIw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"5"
+							]
+						},
+						"description": "Buscar todos os usuários"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/usuarios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"teste-projetos@gmail.com\",\r\n    \"senha\": \"password1\",\r\n    \"nome\": \"Teste\",\r\n    \"descricao\": \"Este é um teste.\",\r\n    \"numeroCelular\": \"51 999999999\",\r\n    \"professor\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios"
+							]
+						},
+						"description": "Criar usuário"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/usuarios",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0Njk1NjU3MiwiZXhwIjoxNjQ2OTU3MTcyfQ.0cwGSuft5DpcQuanJbkSPrhqKDMkBRHrh7RRyKHSVJoCfK1WsaUQyRPgm-NhZBZbeVLRyUrurlHYvd727dF_Lw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"teste-editado-123@gmail.com\",\r\n    \"senha\": \"password11\",\r\n    \"nome\": \"Teste\",\r\n    \"descricao\": \"Teste\",\r\n    \"numeroCelular\": \"51 9182637933\",\r\n    \"professor\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuarios/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"5"
+							]
+						},
+						"description": "Criar usuário"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Questoes",
+			"item": [
+				{
+					"name": "localhost:8080/questoes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY1MDMzMDYxMywiZXhwIjoxNjUwMzMxMjEzfQ.K_YryWNXwFzMkDYQbImA6W_XDs8zzqV4AM5OZWuCmBqkLSJfr-xcAlsdn4msFZe2Nof2rPc15dguFvBx-LcVEw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/questoes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"questoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/questoes/{anoProva}/{matrizCurricular}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0ODgzNTYyNSwiZXhwIjoxNjQ4ODM2MjI1fQ.rxRWVSZGU9F8uuOcNV6JL3cVIzJCDQ9RtKA-s2DrpTvyig2oVwqaRK38V_meIfOI3aIUEQktW5uC3U1S79iO-A",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/questoes/2021/Portugues",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"questoes",
+								"2021",
+								"Portugues"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/questoes/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0Njk2MDg0NiwiZXhwIjoxNjQ2OTYxNDQ2fQ.ci3yyiUyE-RrokF8Ye9WCMUlvppn1LDZZGPWCSP0s-v6g4KxnDh_ZcEhgy2tOkNAYX-wTZVZHHO6lxGZ8AltTA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/questoes/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"questoes",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/questoes/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0Njk1NjEwNywiZXhwIjoxNjQ2OTU2NzA3fQ.KpUO5sboR3xKt4sYtiKi20vq0JdJarnj0j-bdjHaYXO2IaJkGp2angOkiYeF-kA1HwUcG1yaf1ddoi_cKg6RIw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/questoes/11",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"questoes",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/questoes",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY1MDMzMDYxMywiZXhwIjoxNjUwMzMxMjEzfQ.K_YryWNXwFzMkDYQbImA6W_XDs8zzqV4AM5OZWuCmBqkLSJfr-xcAlsdn4msFZe2Nof2rPc15dguFvBx-LcVEw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"enunciado\": \"Essa é uma questão de teste\",\r\n    \"matrizCurricular\": \"Portugues\",\r\n    \"anoProva\": \"2021\",\r\n    \"imagem\": \"src/imagem/test/2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/questoes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"questoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/questoes/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0Njk2MDg0NiwiZXhwIjoxNjQ2OTYxNDQ2fQ.ci3yyiUyE-RrokF8Ye9WCMUlvppn1LDZZGPWCSP0s-v6g4KxnDh_ZcEhgy2tOkNAYX-wTZVZHHO6lxGZ8AltTA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"enunciado\": \"Declaração de Salamanca – 1994 Acreditamos e proclamamos que: toda criança tem direito fundamental à educação e deve ser dada a oportunidade de atingir e manter o nível adequado de aprendizagem; toda criança possui características, interesses, habilidades e necessidades de aprendizagem que são únicas; sistemas educacionais deveriam ser designados e programas educacionais deveriam ser implementados no sentido de se levar em conta a vasta diversidade de tais características e necessidades. Disponível em: http://portal.mec.gov.br. Acesso em: 4 out. 2015. Como signatário da Declaração citada, o Brasil comprometeu-se com a elaboração de políticas públicas educacionais que contemplem a\",\r\n    \"matrizCurricular\": \"Ciências humanas e suas tecnologias\",\r\n    \"anoProva\": \"2020\",\r\n    \"imagem\": \"Teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/questoes/15",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"questoes",
+								"15"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Alternativas",
+			"item": [
+				{
+					"name": "localhost:8080/alternativas",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY1MDMzMDYxMywiZXhwIjoxNjUwMzMxMjEzfQ.K_YryWNXwFzMkDYQbImA6W_XDs8zzqV4AM5OZWuCmBqkLSJfr-xcAlsdn4msFZe2Nof2rPc15dguFvBx-LcVEw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correta\": true,\r\n    \"textoAlternativa\": \"Teste projeto\",\r\n    \"questao\": {\r\n        \"id\": 2\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/alternativas",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alternativas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/alternativas/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0Njk2MDg0NiwiZXhwIjoxNjQ2OTYxNDQ2fQ.ci3yyiUyE-RrokF8Ye9WCMUlvppn1LDZZGPWCSP0s-v6g4KxnDh_ZcEhgy2tOkNAYX-wTZVZHHO6lxGZ8AltTA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correta\": true,\r\n    \"textoAlternativa\": \"Teste editado\",\r\n    \"questao\": {\r\n        \"id\": 3\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/alternativas/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alternativas",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/alternativas/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGVAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0NjcwMTQ0NCwiZXhwIjoxNjQ2NzAyMDQ0fQ.Pp5fL6wf7gHEHoxwbQDPOA_KS3HS3-zS04B6u-ljXDw9tTCb24S1GyZzQ1IC11ogZmWF8JYmZN7olFaxixELNA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/alternativas/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alternativas",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/alternativas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY1MDMzMDYxMywiZXhwIjoxNjUwMzMxMjEzfQ.K_YryWNXwFzMkDYQbImA6W_XDs8zzqV4AM5OZWuCmBqkLSJfr-xcAlsdn4msFZe2Nof2rPc15dguFvBx-LcVEw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/alternativas",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alternativas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/alternativas/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0Njk1NjU3MiwiZXhwIjoxNjQ2OTU3MTcyfQ.0cwGSuft5DpcQuanJbkSPrhqKDMkBRHrh7RRyKHSVJoCfK1WsaUQyRPgm-NhZBZbeVLRyUrurlHYvd727dF_Lw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/alternativas/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alternativas",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Desempenhos",
+			"item": [
+				{
+					"name": "localhost:8080/desempenhos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY1MDMzMDYxMywiZXhwIjoxNjUwMzMxMjEzfQ.K_YryWNXwFzMkDYQbImA6W_XDs8zzqV4AM5OZWuCmBqkLSJfr-xcAlsdn4msFZe2Nof2rPc15dguFvBx-LcVEw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usuario\": {\r\n        \"id\": 1\r\n    },\r\n    \"questao\": {\r\n        \"id\": 1\r\n    },\r\n    \"respondidaCorretamente\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/desempenhos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"desempenhos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/desempenhos/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGVAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0NjcwMjEzNiwiZXhwIjoxNjQ2NzAyNzM2fQ.ccm9gdIjeC90nLHRUhFSK8i6wq6IoXM3RlEznXic_IBahePn76dwyeQlL25X8AnHPU8Y4zayNS02Y7YejXcv3Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usuario\": {\r\n        \"id\": 3\r\n    },\r\n    \"questao\": {\r\n        \"id\": 2\r\n    },\r\n    \"respondidaCorretamente\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/desempenhos/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"desempenhos",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/desempenhos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGVAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0NjcwMjEzNiwiZXhwIjoxNjQ2NzAyNzM2fQ.ccm9gdIjeC90nLHRUhFSK8i6wq6IoXM3RlEznXic_IBahePn76dwyeQlL25X8AnHPU8Y4zayNS02Y7YejXcv3Q",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/desempenhos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"desempenhos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/desempenhos/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGVAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0NjcwMjEzNiwiZXhwIjoxNjQ2NzAyNzM2fQ.ccm9gdIjeC90nLHRUhFSK8i6wq6IoXM3RlEznXic_IBahePn76dwyeQlL25X8AnHPU8Y4zayNS02Y7YejXcv3Q",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/desempenhos/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"desempenhos",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/desempenhos/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGVAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0NjcwMjEzNiwiZXhwIjoxNjQ2NzAyNzM2fQ.ccm9gdIjeC90nLHRUhFSK8i6wq6IoXM3RlEznXic_IBahePn76dwyeQlL25X8AnHPU8Y4zayNS02Y7YejXcv3Q",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/desempenhos/7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"desempenhos",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/desempenhos/usuario/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY1MDMzMDYxMywiZXhwIjoxNjUwMzMxMjEzfQ.K_YryWNXwFzMkDYQbImA6W_XDs8zzqV4AM5OZWuCmBqkLSJfr-xcAlsdn4msFZe2Nof2rPc15dguFvBx-LcVEw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/desempenhos/usuario/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"desempenhos",
+								"usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Explicacoes",
+			"item": [
+				{
+					"name": "localhost:8080/explicacoes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY1MDMzMDYxMywiZXhwIjoxNjUwMzMxMjEzfQ.K_YryWNXwFzMkDYQbImA6W_XDs8zzqV4AM5OZWuCmBqkLSJfr-xcAlsdn4msFZe2Nof2rPc15dguFvBx-LcVEw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/explicacoes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"explicacoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/explicacoes/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGVAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0NjcwMjEzNiwiZXhwIjoxNjQ2NzAyNzM2fQ.ccm9gdIjeC90nLHRUhFSK8i6wq6IoXM3RlEznXic_IBahePn76dwyeQlL25X8AnHPU8Y4zayNS02Y7YejXcv3Q",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/explicacoes/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"explicacoes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/explicacoes",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGVAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0NjcwMjEzNiwiZXhwIjoxNjQ2NzAyNzM2fQ.ccm9gdIjeC90nLHRUhFSK8i6wq6IoXM3RlEznXic_IBahePn76dwyeQlL25X8AnHPU8Y4zayNS02Y7YejXcv3Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usuario\": {\r\n        \"id\": 1\r\n    },\r\n    \"questao\": {\r\n        \"id\": 3\r\n    },\r\n    \"textoExplicacao\": \"Teste editado 123312312\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/explicacoes/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"explicacoes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/explicacoes/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGVAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY0NjcwMjEzNiwiZXhwIjoxNjQ2NzAyNzM2fQ.ccm9gdIjeC90nLHRUhFSK8i6wq6IoXM3RlEznXic_IBahePn76dwyeQlL25X8AnHPU8Y4zayNS02Y7YejXcv3Q",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/explicacoes/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"explicacoes",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/explicacoes",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoidGVzdGUtcHJvamV0b3NAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY1MDMzMDYxMywiZXhwIjoxNjUwMzMxMjEzfQ.K_YryWNXwFzMkDYQbImA6W_XDs8zzqV4AM5OZWuCmBqkLSJfr-xcAlsdn4msFZe2Nof2rPc15dguFvBx-LcVEw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usuario\": {\r\n        \"id\": 1\r\n    },\r\n    \"questao\": {\r\n        \"id\": 2\r\n    },\r\n    \"textoExplicacao\": \"Isso está correto por causa disso e disso.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/explicacoes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"explicacoes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "localhost:8080/token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "teste-projetos@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "senha",
+							"value": "password1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/token",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"token"
+					]
+				},
+				"description": "Criar usuário"
+			},
+			"response": []
+		}
+	]
+}
