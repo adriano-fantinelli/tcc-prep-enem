@@ -2,6 +2,7 @@
 
 ## Executando o Back-end
 
+- Na branch main está o back-end, dentro da pasta BackEndPrepEnem.
 - Instalar o Java, MySQL Workbench, Postman, Eclipse e XAMPP.
 - Iniciar o MySQL no XAMPP.
 - Necessário criar um schema chamado 'prepenem' no MySQL.
@@ -12,4 +13,4 @@
 ## Executando o Front-end
 - Instalar o Flutter e Dart.
 - Rodar a aplicação.
-- O arquivo do FrontEnd esta na branch master.
+- O FrontEnd esta na branch master.
