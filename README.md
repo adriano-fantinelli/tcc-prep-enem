@@ -10,4 +10,5 @@
 - A aplicação estará rodando e para validar podemos utilizar a collection do postman.
 
 ## Executando o Front-end
-- 
+- Instalar o Flutter e Dart.
+- Rodar a aplicação.
